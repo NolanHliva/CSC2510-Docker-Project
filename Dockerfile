@@ -14,3 +14,7 @@ FROM alpine:3.20
     # copy our current directory to /app/server (hint - use --from=builder)
     # expose port 8080 
     # run our server using CMD and ./server
+WORKDIR /app
+copy --from=builder /app/server ./server
+EXPOSE 8080
+cmd ["./server"]
